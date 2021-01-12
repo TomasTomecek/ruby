@@ -139,6 +139,9 @@ if RUBY_PLATFORM =~ /darwin/
   libc_so = libm_so = "/usr/lib/libSystem.B.dylib"
 end
 
+# Just ignore the heuristic, because it is not reliable on all platforms.
+libc_so = libm_so = nil
+
 if !libc_so || !libm_so
   ruby = EnvUtil.rubybin
   # When the ruby binary is 32-bit and the host is 64-bit,
