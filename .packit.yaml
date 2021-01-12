@@ -1,0 +1,5 @@
+---
+specfile_path: "fedora/ruby.spec"
+upstream_ref: "95aff214"
+patch_generation_ignore_paths: ["fedora"]
+
