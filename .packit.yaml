@@ -1,5 +1,12 @@
 ---
 specfile_path: "fedora/ruby.spec"
-upstream_ref: "95aff214"
+# upstream_ref: "v3_0_0"
 patch_generation_ignore_paths: ["fedora"]
-
+actions:
+  post-upstream-clone:
+  # tool/make-snapshot needs git notes which are available only in the primary git repo
+  # and not in the github mirror
+  - "git fetch https://git.ruby-lang.org/ruby.git refs/notes/*:refs/notes/*"
+  create-archive:
+  - "tool/make-snapshot -package=xz ./fedora/"
+  - 'bash -c "ls -1t ./fedora/*.tar.xz | head -n 1"'
